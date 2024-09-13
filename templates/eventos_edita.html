@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    {% set mensagens = get_flashed_messages()%}
+    <form action="/eventos/editasave" method="post">
+        <fieldset class="edita">
+            <input type="hidden" name="id_eventos", value="{{dados.id_eventos}}">
+            <div>
+                <label for="nome">Nome do Evento: </label>
+                <input type="text" name="nome" id="nome", value="{{dados.nome}}">
+            </div>
+            <div>
+                <label for="data">Data do Evento: </label>
+                <input type="date" name="data" id="data", value="{{dados.data}}">
+            </div>
+            <div>
+                <label for="local">Local do Evento: </label>
+                <input type="text" name="local" id="local", value="{{dados.local}}">
+            </div>
+            <div>
+                <button type="submit">Salvar</button>
+            </div>
+        </fieldset>
+    </form>
+    {% if mensagens%}
+        {% for msg in mensagens%}
+            <div class="message">
+                {{msg}}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
